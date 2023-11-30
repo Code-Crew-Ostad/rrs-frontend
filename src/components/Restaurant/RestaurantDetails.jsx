@@ -1,0 +1,176 @@
+import React from 'react'
+import { IoLocationOutline } from "react-icons/io5";
+import { IoRestaurantOutline } from "react-icons/io5";
+import { useState } from "react";
+import { IoCloseCircle } from "react-icons/io5";
+const RestaurantDetails = () => {
+    const [showModal, setShowModal] = useState(false);
+return (
+
+    <>
+           <div className='flex justify-center'>
+        <div className='w-10/12 mt-10'>
+            <img className="h-80 w-full object-cover rounded-lg " src="https://eatapp.co/united-states-restaurants/images/1938-indochine-602-ala-moana-blvd-honolulu-hi-96813-united-states-restaurant-1.jpg" alt="" />
+            <div>
+                <div className='mt-5'>
+                    <h2 className='text-xl font-bold pb-4'>1938 Indochine</h2>
+                    <p className='flex gap-2 pb-2'><IoLocationOutline className='text-xl font-bold' />602 Ala Moana Blvd, Honolulu, HI 96813, United States, Honolulu</p>
+                    <p className='flex gap-2 pb-10'><IoRestaurantOutline className='text-xl font-bold' />Casual Dining</p>
+                </div>
+                <div className='flex'>
+                    <div className='w-8/12'>
+                        <h3 className='text-2xl font-bold pb-2'>Description</h3>
+                        <p className='text-justify'>Southeast Asian delicacies are served in a sophisticated eatery featuring a bar & outdoor seating.Important dining informationWe have a 15 minute grace period. Please call us if you are running later than 15 minutes after your reservation time.We may contact you about this reservation, so please ensure your email and phone number are up to date.Any parties more than 10 people please contact the store to make a reservation.</p>
+                        <div className='flex justify-center mt-10'>
+                        <button type="button" onClick={() => setShowModal(true)} className="px-8 py-3 text-white bg-green-500 hover:bg-green-600 rounded-lg text-lg mt-5">Reserve Your Table</button>
+                        </div>
+                    </div>
+                    <div className='flex flex-col  w-1/3'>
+                        <h3 className='self-center pb-5'>Reserved Tables</h3>
+                        <table className='self-end table-auto  rounded-lg shadow-xl'>
+                            <thead>
+                                <tr className='bg-green-200 h-5'>
+                                    <th className='font-normal px-3'>Table No</th>
+                                    <th className='font-normal px-3'>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className='h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button className="p-1 text-gray-600 hover:bg-green-300 rounded-lg text-lg mt-2 w-1/2 ms-20 self-center">Show All</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{showModal ? (
+    <>
+      <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 ">
+        <div className="relative w-8/12 my-6 mx-auto max-w-3xl">
+          <div className="border-2 rounded-lg shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
+            <div className="flex items-start justify-between p-5 border-b border-solid border-green-300 rounded-t ">
+              <h3 className="text-3xl font-light">Table Reservation</h3>
+              <button
+                className="bg-transparent border-0 text-black float-right"
+                onClick={() => setShowModal(false) }
+              >
+                <span >
+                <IoCloseCircle className='text-red-600 text-2xl' />
+                </span>
+              </button>
+            </div>
+            <div className='flex'>
+            <div className="relative p-6 flex-auto">
+              <form className="bg-green-200 shadow-md rounded px-8 pt-6 pb-8 w-full">
+                <label className="block text-black text-sm font-normal mb-1">
+                Name
+                </label>
+                <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3"/>
+                <label className="block text-black text-sm font-normal mb-1">
+                  Reservation Date
+                </label>
+                <input type='date' className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3" />
+                <label className="block text-black text-sm font-normal mb-1">
+                  Reservation Time
+                </label>
+                <div className='flex gap-3 mb-3'>
+                    <div className='flex flex-col w-1/2'>
+                        <p className='text-xs font-semibold mb-2'>Start Time</p><input type='time' className="shadow appearance-none border rounded w-full  py-2 px-1 text-black" />
+                    </div>
+                    <div className='flex flex-col w-1/2'>
+                        <p className='text-xs font-semibold mb-2'>End Time</p><input type='time' className="shadow appearance-none border rounded w-full py-2 px-1 text-black" />
+                    </div>
+                    
+                </div>
+
+                <label className="block text-black text-sm font-normal mb-1">
+                  Guests
+                </label>
+                <input type='number' className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3" />
+                <label className="block text-black text-sm font-normal mb-1">
+                  Reserved Table:
+                 </label>
+              </form>
+            </div>
+            <div className='mt-5 pe-5'>
+            <h3 className='mb-3'>Availabe Tables</h3>
+            <table className='self-end table-auto  rounded-lg shadow-sm '>
+                            <thead>
+                                <tr className='bg-green-200 h-5'>
+                                    <th className='font-normal px-3'>Table No</th>
+                                    <th className='font-normal px-3'>Time</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr className='h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                                <tr className=' h-10 border-b-2 border-b-gray-200 cursor-pointer'>
+                                    <td className='px-3 text-sm font-light'>T1-R-3C</td>
+                                    <td className='px-3'><span className='text-xs bg-green-500 rounded-lg text-white px-2'>8:30PM - 9:30PM</span> <span className='text-xs bg-green-700 rounded-lg text-white px-2'>12-10-2020</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+            </div>
+            </div>
+            <div className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">  
+              <button
+                className="px-8 py-3 text-white bg-gray-700 hover:bg-gray-900 rounded-lg text-lg mt-5"
+                type="button"
+                onClick={() => setShowModal(false)}
+              >
+                Not intersted
+              </button>
+              <button
+                className="px-8 py-3 text-black bg-yellow-300 hover:bg-yellow-500 rounded-lg text-lg mt-5"
+                type="button"
+                onClick={() => setShowModal(false)}
+              >
+                Reserve
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  ) : null}
+    </>
+    
+)
+}
+
+export default RestaurantDetails

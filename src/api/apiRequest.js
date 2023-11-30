@@ -2,13 +2,20 @@ import axios from "axios";
 import unauthorized from "../utils/unauthorized.js";
 
 let BASEURL="http://localhost:5000";
-//let BASEURL="http://127.0.0.1:9229/";
 
-export  async function UserRegistrationRequest(userType,email,firstName,lastName) {
+export  async function UserRegistrationRequest(userType,email,firstName,lastName,mobile) {
     try {
 
-        let URL=BASEURL+'/api/v1/UserRegistration/'+email;
-        let reqBody = {"userType":userType,"firstName":firstName,"lastName":lastName};
+        let URL=BASEURL+'/api/v1/UserRegistration';
+        let reqBody = {
+            
+            "firstName":firstName,
+            "lastName":lastName, 
+            "mobile":mobile,
+            "userType":userType, 
+            "email":email,
+            "password":""
+        };
         let result=await axios.post(URL, reqBody);
         let data=result.data
         return data;
@@ -18,11 +25,15 @@ export  async function UserRegistrationRequest(userType,email,firstName,lastName
     }
 }
 
-export  async function VerifyRegistrationRequest(email,code,password) {
+export  async function VerifyRegistrationRequest(email,otp,password) {
     try {
 
-        let URL=BASEURL+'/api/v1/VerifyRegistration/'+email+"/"+code;
-        let reqBody = {"password":password};
+        let URL=BASEURL+'/api/v1/VerifyRegistration';
+        let reqBody = {
+            "password":password,
+            "email":email,
+            "otp":otp
+        };
         let result=await axios.post(URL, reqBody);
         let data=result.data
 

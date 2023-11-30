@@ -8,7 +8,6 @@ const Login = () => {
     const [email,setEmail]=useState("");
     const [BtnLoader, SetBtnLoader] = useState(false);
     const navigate = useNavigate();
-  
     const LoginEmail = async (e) => {
         e.preventDefault();
         if (email.length === 0) {
@@ -17,14 +16,13 @@ const Login = () => {
             SetBtnLoader(true)
             let res= await UserLoginRequest(email);
             SetBtnLoader(false)
-           if(res['status']==="success"){
-               toast.success(res['message']);
-               navigate("/verify/"+email)
-           }
-           else{
-               toast.error(res['message']);
-           }
-  
+        if(res['status']==="success"){
+            toast.success(res['message']);
+            navigate("/verify/"+email)
+        }
+        else{
+            toast.error(res['message']);
+        }
         }
     }
     return (

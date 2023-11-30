@@ -5,8 +5,8 @@ import Master from '../components/Navbar/Master';
 const VerifyPage = () => {
     return (
         <Master>
-             <Verify/>
-       </Master>
+            <Verify/>
+        </Master>
     );
 };
 

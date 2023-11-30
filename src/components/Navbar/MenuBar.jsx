@@ -1,7 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 import { IoFastFoodSharp } from "react-icons/io5";
-import { IoIosSearch } from "react-icons/io";
 const MenuBar = () => {
     return (
         <nav className='flex justify-between rounded-sm shadow-sm shadow-green-300 pt-5 pb-5 ps-24 pe-24'>

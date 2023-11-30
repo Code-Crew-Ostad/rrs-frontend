@@ -9,7 +9,10 @@ const Register = () => {
     const [userType, setUserType] = useState("");
     const [firstName, setFirstName]=useState("");
     const [lastName, setLastName]=useState("");
+    const [mobile, setMobileNo]=useState("");
     const [email,setEmail]=useState("");
+    
+
     const [BtnLoader, SetBtnLoader] = useState(false);
 
     const navigate = useNavigate();
@@ -24,7 +27,7 @@ const Register = () => {
                 toast.error("Please enter a valid email !");
             }else {
                 SetBtnLoader(true)
-                let res= await UserRegistrationRequest(userType,email,firstName,lastName);
+                let res= await UserRegistrationRequest(userType,email,firstName,lastName, mobile);
                 SetBtnLoader(false)
                 if(res['status']==="success"){
                     toast.success(res['message']);
