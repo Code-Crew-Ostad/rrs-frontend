@@ -12,6 +12,10 @@ import Dashboard from './components/DashboardRest/Dashboard'
 import Profile from './components/DashboardRest/Profile'
 import Gallery from './components/DashboardRest/Gallery'
 import Table from './components/DashboardRest/Table'
+import Timing from './components/DashboardRest/Timing'
+import MailTemplate from './components/DashboardRest/MailTemplate'
+import Menu from './components/DashboardRest/Menu'
+import Report from './components/DashboardRest/Report'
 
 function App() {
 
@@ -32,6 +36,10 @@ function App() {
           <Route path='/restaurant/branch' element={<Branch />}/>
           <Route path='/restaurant/gallery' element={<Gallery/>}/>
           <Route path='/restaurant/table' element={<Table/>}/>
+          <Route path='/restaurant/timing' element={<Timing/>}/>
+          <Route path='/restaurant/menu' element={<Menu/>}/>
+          <Route path='/restaurant/report' element={<Report/>}/>
+          <Route path='/restaurant/mailtemplate' element={<MailTemplate/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

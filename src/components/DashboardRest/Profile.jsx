@@ -3,8 +3,7 @@ import React from 'react'
 const Profile = () => {
   return (
     <>
-        <div className='flex flex-col '> 
-            <h3 className="text-base font-medium pt-2 pl-5"><span className='bg-slate-800 rounded-2xl px-3 text-white'>Restaurant Information</span></h3>   
+        <div className='flex flex-col '>   
             <div className='p-5'>
                 <form className="flex bg-green-200 shadow-md rounded px-8 pt-6 pb-8 w-full gap-5">
                     <div className='w-1/2 text-base font-light'>
@@ -43,7 +42,7 @@ const Profile = () => {
                     </div>
                     <div className='flex flex-col w-1/2 text-base font-light items-center'>
                         <div className='w-full h-full pt-5'>
-                            <image className='w-full h-1/2 border-none m-0 border-yellow-600 pb-5 rounded-xl'/>
+                            <img className='w-full h-1/2 border-none m-0 border-yellow-600 pb-5 rounded-xl'/>
                             <input className='file:bg-green-500 file:border-none file:text-white rounded-xl hover:file:bg-green-700 file:cursor-pointer cursor-pointer' type="file" name="image" id="image" />
                         </div>
                         <button className='block bg-yellow-500 text-white font-medium shadow-sm rounded-2xl px-3 py-2 mt-20 hover:shadow-2xl hover:scale-105' type="button">Save Changes</button>

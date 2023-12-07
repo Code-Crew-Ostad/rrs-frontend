@@ -42,7 +42,7 @@ const Register = () => {
         }
     }
     return (
-        <>
+        <div className='h-screen'>
             <div className='flex flex-col justify-center items-center'>
                 <div className='flex w-4/12 border shadow-sm px-10 py-4 mt-10 justify-between rounded-lg'>
                     <label className='cursor-pointer'>
@@ -72,7 +72,7 @@ const Register = () => {
                 </div>
                 <div className='flex h-auto w-4/12 flex-col border shadow-lg p-10 mt-3 rounded-lg'>
                     <label htmlFor='firstName'>First Name</label>
-                    <input className='rounded h-10 border border-green-200 outline-none p-2 mb-5 placeholder:text-[1.5vh]' 
+                    <input className='border border-gray-400 rounded-lg w-full py-2 px-3 text-black mb-3 focus:outline-none focus:ring focus:ring-violet-100 placeholder:text-xs' 
                         type="text" 
                         text="First Name" 
                         name='firstName' 
@@ -81,7 +81,7 @@ const Register = () => {
                         value={firstName}
                     />
                     <label htmlFor='lastName'>Last Name</label>
-                    <input className='rounded h-10 border border-green-200 outline-none p-2 mb-5 placeholder:text-[1.5vh]' 
+                    <input className='border border-gray-400 rounded-lg w-full py-2 px-3 text-black mb-3 focus:outline-none focus:ring focus:ring-violet-100 placeholder:text-xs' 
                         type="text" 
                         text="Last Name" 
                         name='lastName' 
@@ -93,16 +93,17 @@ const Register = () => {
                     <input value={email} 
                             onChange={(e)=>{setEmail(e.target.value)}} 
                             placeholder="Required"
-                            className='rounded h-10 border border-green-200 outline-none p-2 mb-5 placeholder:text-[1.5vh]' 
+                            className='border border-gray-400 rounded-lg w-full py-2 px-3 text-black mb-3 focus:outline-none focus:ring focus:ring-violet-100 placeholder:text-xs' 
                             type="text" 
                             text="Email" 
                             name='email'
-                            autoComplete='off' />
-                    <SubmitButton submit={BtnLoader} text="Next >" onClick={LoginEmail} className="p-3 text-white bg-green-400 hover:bg-green-600 rounded-lg text-lg mt-5" role="status" />
+                            autoComplete='off'
+                            autoFocus='true' />
+                    <SubmitButton submit={BtnLoader} text="Next >" onClick={LoginEmail} className="p-3 text-white bg-green-400 hover:bg-green-600 rounded-lg text-lg mt-5 focus:outline-none focus:ring focus:ring-violet-200" role="status" />
                 </div>
             </div> 
             <Toaster position={"bottom-center"} />
-        </>
+        </div>
         
     );
 };

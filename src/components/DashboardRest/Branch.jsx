@@ -3,8 +3,7 @@ import React from 'react'
 const Branch = () => {
   return (
     <>
-    <div className='flex flex-col '> 
-        <h3 className="text-base font-medium pt-2 pl-5"><span className='bg-slate-800 rounded-2xl px-3 text-white'>Branch Information</span></h3>   
+    <div className='flex flex-col mt-5'> 
         <div className='w-full  px-5 py-1'>
             <table className='w-full shadow-sm'>
                 <thead>
