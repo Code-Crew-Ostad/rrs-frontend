@@ -4,7 +4,7 @@ import GalleryImageCard from './GalleryImageCard'
 const Gallery = () => {
     return (
     <div className='flex flex-col text-base font-light p-5'>
-        <div className=' flex w-full h-full pt-5 mb-10 items-center gap-10'>
+        <div className=' flex p-5 mb-10 items-center gap-10 bg-green-200 shadow-md rounded'>
             <div className=''>
                 <label className="block text-black mb-1">
                     Restaurant Name
@@ -15,8 +15,8 @@ const Gallery = () => {
                     <option>GEC, Chattogram</option>
                 </select>
             </div>
-            <div className='mt-3'>
-                <input className='file:bg-green-500 file:border-none file:text-white hover:file:bg-green-700 file:cursor-pointer cursor-pointer' type="file" name="image" id="image" />
+            <div className=' flex mt-9 justify-between w-full'>
+            <input className='file:bg-green-500 file:border-none file:text-white  hover:file:bg-green-700 file:cursor-pointer cursor-pointer' type="file" name="image" id="image" />
                 <button className=' bg-yellow-500 text-white font-medium shadow-sm rounded-2xl p-3 hover:shadow-2xl hover:scale-105' type="button">Save Changes</button>
             </div>
         </div>
