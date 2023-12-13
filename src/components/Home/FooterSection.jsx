@@ -6,7 +6,7 @@ return (
         <div className='flex justify-around w-full mb-10'>
         <div className='flex flex-col'>
                 <div className='flex items-center gap-2'>
-                    <img className='w-16' src="../../../public/get-rest-sqr.svg" alt="" />
+                    <img className='w-16' src="/get-rest-sqr.svg" alt="" />
                     <h1 className='text-[40px] font-bold text-[#474646]'>get rest</h1>
                 </div>
                 <p className='text-[16px] font-thin text-[#474646]'>A Restaurant Reservation System</p>

@@ -1,5 +1,5 @@
 import React from 'react'
-import img from '../../../public/images/girl-date-select.svg'
+import img from '/images/girl-date-select.svg'
 import { Link } from 'react-router-dom'
 import { GoArrowDown } from "react-icons/go";
 

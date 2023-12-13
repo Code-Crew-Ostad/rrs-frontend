@@ -27,7 +27,7 @@ const handleTabClick = (tabNumber) => {
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim veritatis minus maiores quas voluptas cupiditate saepe quisquam nihil autem, aliquid ad adipisci deleniti ullam provident ea molestiae deserunt? Quod, earum.</p>
               </div>
               <div className='w-4/12'>
-                <img src="../../../public/feature-image/booking.svg" alt="" />
+                <img src="/feature-image/booking.svg" alt="" />
               </div>
           </div>
         }
@@ -38,7 +38,7 @@ const handleTabClick = (tabNumber) => {
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim veritatis minus maiores quas voluptas cupiditate saepe quisquam nihil autem, aliquid ad adipisci deleniti ullam provident ea molestiae deserunt? Quod, earum.</p>
           </div>
           <div className='w-4/12'>
-            <img src="../../../public/feature-image/booking.svg" alt="" />
+            <img src="/feature-image/booking.svg" alt="" />
           </div>
           </div>
         }

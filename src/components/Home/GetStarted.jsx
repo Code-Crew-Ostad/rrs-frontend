@@ -30,7 +30,7 @@ const GetStarted = () => {
             <Link to="/register" className='bg-[#327873] py-4 px-10 rounded-lg text-xl text-white mr-5 shadow-md hover:bg-[#46a39d]'>Get Started</Link>
         </div>
         <div className=''>
-            <img className='w-96' src="../../../public/images/boy-screen.svg" alt="" />
+            <img className='w-96' src="/images/boy-screen.svg" alt="" />
         </div>
     </div>
   )

@@ -1,12 +1,12 @@
 import React from 'react'
-import img1 from '../../../public/company-logos/logo-1.svg'
-import img2 from '../../../public/company-logos/logo-2.svg'
-import img3 from '../../../public/company-logos/logo-3.svg'
-import img4 from '../../../public/company-logos/logo-4.svg'
-import img5 from '../../../public/company-logos/logo-5.svg'
-import img6 from '../../../public/company-logos/logo-6.svg'
-import img7 from '../../../public/company-logos/logo-7.svg'
-import img8 from '../../../public/company-logos/logo-8.svg'
+import img1 from '/company-logos/logo-1.svg'
+import img2 from '/company-logos/logo-2.svg'
+import img3 from '/company-logos/logo-3.svg'
+import img4 from '/company-logos/logo-4.svg'
+import img5 from '/company-logos/logo-5.svg'
+import img6 from '/company-logos/logo-6.svg'
+import img7 from '/company-logos/logo-7.svg'
+import img8 from '/company-logos/logo-8.svg'
 
 const TrustedCompanies = () => {
   return (
