@@ -16,6 +16,7 @@ import Timing from './components/DashboardRest/Timing'
 import MailTemplate from './components/DashboardRest/MailTemplate'
 import Menu from './components/DashboardRest/Menu'
 import Report from './components/DashboardRest/Report'
+import RestaurantFeed from './pages/restaurant-feed'
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/feed" element={<RestaurantFeed />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/verify/:email" element={<VerifyPage />} />

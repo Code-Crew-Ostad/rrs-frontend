@@ -74,7 +74,9 @@ const Branch = () => {
                 </div>
                 <div className='flex flex-col w-1/2 text-base font-light items-center'>
                     <div className='w-full h-full pt-5'>
-                        <img className='w-full h-1/2 border-none m-0 border-yellow-600 pb-5 rounded-xl'/>
+                        <div className='h-1/2 border m-0 border-amber-500 pb-5 rounded-xl mb-2'>
+                            <img className=''/>
+                        </div>      
                         <input className='file:bg-green-500 file:border-none file:text-white rounded-xl file:cursor-pointer cursor-pointer' type="file" name="image" id="image" />
                     </div>
                     <button className='block bg-yellow-500 text-white font-medium shadow-sm rounded-2xl px-3 py-2 mt-20 hover:shadow-2xl hover:scale-105' type="button">Save Changes</button>

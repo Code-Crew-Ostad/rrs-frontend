@@ -9,3 +9,24 @@
 body {
   background: rgb(244, 244, 244);
 }
+
+::selection {
+  background-color: #6bbd8d; /* Change this to your desired color */
+  color: #fff;
+}
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.marquee-container {
+  white-space: nowrap;
+  overflow: hidden;
+}
+.marquee {
+  animation: marquee 10s linear infinite;
+}
+

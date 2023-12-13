@@ -24,7 +24,9 @@ const VerifyTwo = () => {
             if(res['status']==="success"){
                 toast.success(res['message']);
                 localStorage.setItem('login','1');
-
+                localStorage.setItem('email',res['email'])
+                localStorage.setItem('type',res['type'])
+                
                 if(sessionStorage.getItem('lastLocation')!==null){
                     window.location.href=sessionStorage.getItem('lastLocation')
                 }
@@ -63,7 +65,7 @@ const VerifyTwo = () => {
                         text="password"
                         placeholder='Required'
                 />
-                <SubmitButton submit={BtnLoader} text="Verify & Login" onClick={LoginVerify} className="p-3 text-white bg-green-400 hover:bg-green-600 rounded-lg text-lg mt-5" role="status" />
+                <SubmitButton submit={BtnLoader} text="Verify & Login" onClick={LoginVerify} className="p-3 text-white bg-[#25916a] hover:opacity-80 rounded-lg text-lg mt-5" role="status" />
             </div>
         </div> 
     <Toaster position={"bottom-center"} />

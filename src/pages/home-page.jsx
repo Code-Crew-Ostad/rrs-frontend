@@ -1,12 +1,23 @@
-import React from 'react';
-import Master from '../components/Navbar/Master';
-import RestaurantCardList from '../components/Restaurant/RestaurantCardList';
+import React, { useState } from 'react';
+import HomeNavBar from '../components/Home/HomeNavbar';
+import HeroSection from '../components/Home/HeroSection';
+import TrustedCompanies from '../components/Home/TrustedCompanies';
+import Features from '../components/Home/Features';
+import Clients from './../components/Home/Clients';
+import GetStarted from '../components/Home/GetStarted';
+import FooterSection from '../components/Home/FooterSection';
 
 const HomePage = () => {
     return (
-        <Master>
-            <RestaurantCardList />
-        </Master>
+      <>
+        <HomeNavBar/>
+        <HeroSection  />
+        <TrustedCompanies/>
+        <Features/>
+        <Clients/>
+        <GetStarted/>
+        <FooterSection/>
+      </>
     );
 };
 

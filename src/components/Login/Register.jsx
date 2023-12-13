@@ -53,7 +53,7 @@ const Register = () => {
                             onChange={() => setUserType("user")}
                             value={userType}
                         />
-                        <div className='p-2 text-center rounded-md  peer-checked:bg-green-400 peer-checked:text-white hover:bg-green-600 hover:text-white'>
+                        <div className='p-2 text-center border rounded-md  peer-checked:bg-[#25916a] peer-checked:text-white hover:border-[#25916a]'>
                             <p>I want to reserve a seat</p>
                         </div>
                     </label>
@@ -65,7 +65,7 @@ const Register = () => {
                             onChange={() => setUserType("owner")}
                             value={userType}
                         />
-                        <div className='p-2 text-center rounded-md  peer-checked:bg-green-400 peer-checked:text-white hover:bg-green-600 hover:text-white'>
+                        <div className='p-2 text-center border rounded-md  peer-checked:bg-[#25916a] peer-checked:text-white hover:border-[#25916a]'>
                             <p>I'm a Restaurant Owner</p>
                         </div>
                     </label>
@@ -99,7 +99,7 @@ const Register = () => {
                             name='email'
                             autoComplete='off'
                             autoFocus='true' />
-                    <SubmitButton submit={BtnLoader} text="Next >" onClick={LoginEmail} className="p-3 text-white bg-green-400 hover:bg-green-600 rounded-lg text-lg mt-5 focus:outline-none focus:ring focus:ring-violet-200" role="status" />
+                    <SubmitButton submit={BtnLoader} text="Next >" onClick={LoginEmail} className="p-3 text-white bg-[#25916a] hover:opacity-95 rounded-lg text-lg mt-5 focus:outline-none focus:ring focus:ring-violet-200" role="status" />
                 </div>
             </div> 
             <Toaster position={"bottom-center"} />
