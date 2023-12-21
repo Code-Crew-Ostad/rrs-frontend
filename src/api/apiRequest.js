@@ -22,7 +22,10 @@ export async function UserRegistrationRequest(
       email: email,
       password: "",
     };
-    let result = await axios.post(URL, reqBody);
+    let result = await axios.post(URL, reqBody,{
+      headers: {
+        'Content-Type': 'application/json'
+      }});
     let data = result.data;
     return data;
   } catch (e) {
@@ -38,7 +41,10 @@ export async function VerifyRegistrationRequest(email, otp, password) {
       email: email,
       otp: otp,
     };
-    let result = await axios.post(URL, reqBody);
+    let result = await axios.post(URL, reqBody,{
+      headers: {
+        'Content-Type': 'application/json'
+      }});
     let data = result.data;
 
     return data;
