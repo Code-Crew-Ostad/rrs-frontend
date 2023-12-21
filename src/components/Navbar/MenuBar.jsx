@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
-import { IoFastFoodSharp } from "react-icons/io5";
 import {UserLogout} from "../../api/apiRequest";
 import SubmitButton from './../SubmitButton';
 
 const MenuBar = () => {
+
+  //const userData = useSelector((state)=>state.user.data)
 
   const [logoutLoader,setLogoutLoader]=useState(false);
   const [isOpen, setIsOpen] = useState(false);
@@ -29,7 +30,7 @@ const MenuBar = () => {
     localStorage.clear();
     await UserLogout()
     setLogoutLoader(false);
-    window.location.href="/"
+    navigate("/")
 }
 
   return (
@@ -184,8 +185,8 @@ const MenuBar = () => {
                     {isOpen && (
                       <div class="absolute right-4 my-4 text-base list-none bg-[#f4f4f4] divide-y divide-green-500 rounded-lg shadow-lg" id="user-dropdown">
                         <div class="px-4 py-3">
-                          <span class="block text-sm text-gray-900 ">Your Name</span>
-                          <span class="block text-sm  text-gray-500 truncate ">name@mail.com</span>
+                          <span class="block text-sm text-gray-900 ">{localStorage.getItem('name')}</span>
+                          <span class="block text-sm  text-gray-500 truncate ">{localStorage.getItem('email')}</span>
                         </div>
                         <ul class="py-2" aria-labelledby="user-menu-button">
                           <li>

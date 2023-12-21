@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoLocationOutline } from "react-icons/io5";
 import { IoRestaurantOutline } from "react-icons/io5";
 import { useState } from "react";
 import { IoCloseCircle } from "react-icons/io5";
 import Map from './Map';
 import Reviews from "./Reviews";
+import { GetRestaurantDetailById, MakeReservation } from "../../api/apiRequest";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
 
 const RestaurantDetails = () => {
-  const [showModal, setShowModal] = useState(false);
 
+  const navigate = useNavigate();
+  const {state} = useLocation();
+  useEffect(()=>{
+    LoadRestaurantDetails();
+  },[])
+
+  const [details, setDetails] = useState({});
+  const LoadRestaurantDetails = async ()=>{
+      let restDetails = await GetRestaurantDetailById(state.restId);
+      setDetails(restDetails);
+  }
+  const [showModal, setShowModal] = useState(false);
   const location = {
     address: '1600 Amphitheatre Parkway, Mountain View, california.',
     lat: 37.42216,
     lng: -122.08427,
   }
-
   const reviews =[
     {
       id:"1",
@@ -38,40 +51,72 @@ const RestaurantDetails = () => {
       review: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, quisquam."
     }
   ]
+  const [reservation, setReservation] = useState({
+    reqs_date:"",
+    reqs_id:"",
+    resv_date: new Date().toISOString().slice(0, 10),
+    start_time:new Date().toISOString().slice(11, 16),
+    end_time:new Date().toISOString().slice(11, 16),
+    guests:"2",
+    status:"pending",
+    user_email:localStorage.getItem('email'),
+    user_name:localStorage.getItem('name'),
+    rest_Id:state.restId
+  }) 
 
-  
+  // const makeReservation  = async ()=>{
+  //   let isReserved = 
+  // }
+
+  const handleInputChange = (name, value) => {
+    setReservation({
+      ...reservation,
+      [name]: value,
+  });
+};
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  let res = await MakeReservation(reservation)
+  console.log(reservation);
+  console.log(res);
+  if(res["status"]=="success"){
+    toast.success(res["message"]);
+    //setShowModal(false); 
+    navigate("/profile")
+  }
+  else{
+    toast.error("Something went wrong!")
+    
+  }
+  // console.log(reservation)
+  // console.log(new Date().toISOString().slice(0, 10))
+}
+
   return (
     <div className="h-full">
       <div className="flex justify-center">
         <div className="w-10/12 mt-10">
           <img
             className="h-80 w-full object-cover rounded-lg "
-            src="https://eatapp.co/united-states-restaurants/images/1938-indochine-602-ala-moana-blvd-honolulu-hi-96813-united-states-restaurant-1.jpg"
+            src={details.image}
             alt=""
           />
           <div className="flex mb-20">
             <div className="w-8/12">
               <div className="mt-5">
-                <h2 className="text-xl font-bold pb-4">1938 Indochine</h2>
+                <h2 className="text-xl font-bold pb-4">{details.name}</h2>
                 <p className="flex gap-2 pb-2">
                   <IoLocationOutline className="text-xl font-bold" />
-                  602 Ala Moana Blvd, Honolulu, HI 96813, United States,
-                  Honolulu
+                  {details.detailAddress}
                 </p>
                 <p className="flex gap-2 pb-10">
                   <IoRestaurantOutline className="text-xl font-bold" />
-                  Casual Dining
+                  {details.cuisineType}
                 </p>
               </div>
               <h3 className="text-2xl font-bold pb-2">Description</h3>
               <p className="text-justify">
-                Southeast Asian delicacies are served in a sophisticated eatery
-                featuring a bar & outdoor seating.Important dining informationWe
-                have a 15 minute grace period. Please call us if you are running
-                later than 15 minutes after your reservation time.We may contact
-                you about this reservation, so please ensure your email and
-                phone number are up to date.Any parties more than 10 people
-                please contact the store to make a reservation.
+                {details.description}
               </p>
               <div className="mt-10">
               {/* <Map location={location} zoomLevel={17}/> */}
@@ -176,9 +221,9 @@ const RestaurantDetails = () => {
 
       {showModal ? (
         <>
-          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 ">
+          <div className="flex justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 bg-[#f4f4f4f3]">
             <div className="relative w-8/12 my-6 mx-auto max-w-3xl">
-              <div className="border-2 rounded-lg shadow-2xl relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-2 rounded-lg shadow-2xl relative flex flex-col w-8/12 bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-green-300 rounded-t ">
                   <h3 className="text-3xl font-light">Table Reservation</h3>
                   <button
@@ -196,13 +241,22 @@ const RestaurantDetails = () => {
                       <label className="block text-black text-sm font-normal mb-1">
                         Name
                       </label>
-                      <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3" />
+                      <input className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3"
+                            name="user_name"
+                            type="text"
+                            value={reservation.user_name}
+                            onChange={(e)=>handleInputChange('user_name',e.target.value)}
+                            autoFocus={true}
+                      />
                       <label className="block text-black text-sm font-normal mb-1">
                         Reservation Date
                       </label>
                       <input
                         type="date"
                         className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3"
+                        name="resv_date"
+                        value={reservation.resv_date}
+                        onChange={(e)=>handleInputChange('resv_date',e.target.value)}
                       />
                       <label className="block text-black text-sm font-normal mb-1">
                         Reservation Time
@@ -215,6 +269,9 @@ const RestaurantDetails = () => {
                           <input
                             type="time"
                             className="shadow appearance-none border rounded w-full  py-2 px-1 text-black"
+                            name="start_time"
+                            value={reservation.start_time}
+                            onChange={(e)=>handleInputChange('start_time',e.target.value)}
                           />
                         </div>
                         <div className="flex flex-col w-1/2">
@@ -222,6 +279,9 @@ const RestaurantDetails = () => {
                           <input
                             type="time"
                             className="shadow appearance-none border rounded w-full py-2 px-1 text-black"
+                            name="end_time"
+                            value={reservation.end_time}
+                            onChange={(e)=>handleInputChange('end_time',e.target.value)} 
                           />
                         </div>
                       </div>
@@ -232,13 +292,16 @@ const RestaurantDetails = () => {
                       <input
                         type="number"
                         className="shadow appearance-none border rounded w-full py-2 px-1 text-black mb-3"
+                        name="guests"
+                        value={reservation.guests}
+                        onChange={(e)=>handleInputChange('guests',e.target.value)} 
                       />
-                      <label className="block text-black text-sm font-normal mb-1">
+                      {/* <label className="block text-black text-sm font-normal mb-1">
                         Reserved Table:
-                      </label>
+                      </label> */}
                     </form>
                   </div>
-                  <div className="mt-5 pe-5">
+                  {/* <div className="mt-5 pe-5">
                     <h3 className="mb-3">Availabe Tables</h3>
                     <table className="self-end table-auto  rounded-lg shadow-sm ">
                       <thead>
@@ -305,7 +368,7 @@ const RestaurantDetails = () => {
                         </tr>
                       </tbody>
                     </table>
-                  </div>
+                  </div> */}
                 </div>
                 <div className="flex items-center justify-between p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button
@@ -318,7 +381,7 @@ const RestaurantDetails = () => {
                   <button
                     className="px-8 py-3 text-black bg-yellow-300 hover:bg-yellow-500 rounded-lg text-lg mt-5"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={handleSubmit}
                   >
                     Reserve
                   </button>
@@ -328,6 +391,7 @@ const RestaurantDetails = () => {
           </div>
         </>
       ) : null}
+      <Toaster position={"bottom-center"} />
     </div>
   );
 };

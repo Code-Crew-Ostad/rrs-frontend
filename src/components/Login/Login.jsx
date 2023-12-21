@@ -3,51 +3,76 @@ import { UserLoginRequest} from "../../api/apiRequest";
 import {useNavigate} from "react-router-dom"
 import toast, { Toaster } from 'react-hot-toast';
 import SubmitButton from "../SubmitButton";
+import { useSelector, useDispatch } from 'react-redux';
+import {setUser} from '../../redux/features/userSlice';
 
 const Login = () => {
 
-    const [email,setEmail]=useState("");
-    const [password,setPassword]=useState("");
-    const [BtnLoader, SetBtnLoader] = useState(false);
-    const navigate = useNavigate();
+        const user = useSelector((state)=>state.user.data);
+        const dispatch = useDispatch();
+
+        const [email,setEmail]=useState("");
+        const [password,setPassword]=useState("");
+        const [BtnLoader, SetBtnLoader] = useState(false);
+        const navigate = useNavigate();
     
-    const LoginEmail = async (e) => {
-        e.preventDefault();
-        if(email.length === 0) {
-            toast.error("Email Required !");}
-        else if (email.length > 0 && !email.includes("@")) {
-            toast.error("email Required !");
-        } else if(password.length < 6){
-            toast.error("Password length is short!");
-        }else {
-            SetBtnLoader(true)
-            let res= await UserLoginRequest(email, password);
-            SetBtnLoader(false)
-            if(res['status']==="success"){
-                toast.success(res['message']);
-                localStorage.setItem('login','1');
-                localStorage.setItem('email',res['email'])
-                localStorage.setItem('type',res['type'])
+        const LoginEmail = async (e) => {
+            e.preventDefault();
+            try {
+                if(email.length === 0) {
+                    toast.error("Email Required !");}
+                else if (email.length > 0 && !email.includes("@")) {
+                    toast.error("email Required !");
+                } else if(password.length < 6){
+                    toast.error("Password length is short!");
+                }else {
+                SetBtnLoader(true)
+                let res= await UserLoginRequest(email, password);
+                SetBtnLoader(false)
+
+                if(res['status']==="success"){  
+                    toast.success(res['message']);
+
+                    //-------------Redux-Toolkit-----------------
+                    dispatch(setUser({'email':res['data']['email'], 
+                                'type':res['data']['type'],
+                                'firstName':res['data']['firstName'],
+                                'lastName':res['data']['lastName'],
+                            }));
+                    //-------------Local Storage-----------------
+                    localStorage.setItem('login','1');
+                    localStorage.setItem('email',res['data']['email']);
+                    localStorage.setItem('type',res['data']['type']);
+                    localStorage.setItem('id',res['data']['id']);
+                    localStorage.setItem('name',res['data']['firstName'] +" "+ res['data']['lastName']);
                 
-                if(res['type']==='owner'){
-                    navigate("/restaurant/dashboard")
+                    if(res['data']['type']==='owner'){
+                        navigate("/restaurant/dashboard");
+                    }
+                    else if(res['data']['type']==='user'){
+                        navigate("/feed");
+                    }
+                    else{
+                        navigate("/");
+                    }
+
+                    // if(sessionStorage.getItem('lastLocation')!==null){
+                    //     window.location.href=sessionStorage.getItem('lastLocation')
+                    // }
+                    // else{
+                        
+                    // }
                 }
                 else{
-                    window.location.href="/feed"
+                    toast.error(res['message']);
+                    return false;
                 }
-                // if(sessionStorage.getItem('lastLocation')!==null){
-                //     window.location.href=sessionStorage.getItem('lastLocation')
-                // }
-                // else{
-                    
-                // }
+            }
+            } catch (error) {
+                toast.error(error)
+            }
 
-            }
-            else{
-                toast.error(res['message']);
-            }
         }
-    }
     return (
         <div className='h-screen'>
             <div className='flex justify-center items-center h-auto'>

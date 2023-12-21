@@ -5,8 +5,8 @@ import Master from '../components/Navbar/Master';
 const RegisterPage = (logOrReg) => {
     return (
         <Master>
-             <Register/>
-       </Master>
+            <Register/>
+        </Master>
     );
 };
 

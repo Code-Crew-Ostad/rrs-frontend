@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import { VerifyRegistrationRequest} from "../../api/apiRequest";
 import toast, {Toaster} from "react-hot-toast";
 import SubmitButton from "../SubmitButton";
@@ -10,7 +10,7 @@ const VerifyTwo = () => {
     const [BtnLoader, SetBtnLoader] = useState(false);
     const [otp,setOtp]=useState("");
     const [password,setPassword]=useState("");
-
+    const navigate = useNavigate();
     const LoginVerify = async (e) => {
         e.preventDefault();
         if (otp.length === 0) {
@@ -23,15 +23,35 @@ const VerifyTwo = () => {
             SetBtnLoader(false)
             if(res['status']==="success"){
                 toast.success(res['message']);
+                //-------------Redux-Toolkit-----------------
+                dispatch(setUser({'email':res['data']['email'], 
+                                'type':res['data']['type'],
+                                'firstName':res['data']['firstName'],
+                                'lastName':res['data']['lastName'],
+                            }));
+                //-------------Local Storage-----------------
+
                 localStorage.setItem('login','1');
-                localStorage.setItem('email',res['email'])
-                localStorage.setItem('type',res['type'])
+                localStorage.setItem('email',res['data']['email']);
+                localStorage.setItem('type',res['data']['type']);
+                localStorage.setItem('id',res['data']['id']);
+                localStorage.setItem('name',res['data']['firstName'] +" "+ res['data']['lastName']);
                 
-                if(sessionStorage.getItem('lastLocation')!==null){
-                    window.location.href=sessionStorage.getItem('lastLocation')
+                // if(sessionStorage.getItem('lastLocation')!==null){
+                //     window.location.href=sessionStorage.getItem('lastLocation')
+                // }
+                // else{
+                //     window.location.href="/"
+                // }
+
+                if(res['data']['type']==='owner'){
+                    navigate("/restaurant/dashboard");
+                }
+                else if(res['data']['type']==='user'){
+                    navigate("/feed");
                 }
                 else{
-                    window.location.href="/"
+                    navigate("/");
                 }
 
             }

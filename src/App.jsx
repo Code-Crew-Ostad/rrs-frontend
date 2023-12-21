@@ -17,6 +17,7 @@ import MailTemplate from './components/DashboardRest/MailTemplate'
 import Menu from './components/DashboardRest/Menu'
 import Report from './components/DashboardRest/Report'
 import RestaurantFeed from './pages/restaurant-feed'
+import ProfilePage from './pages/profile-page'
 
 function App() {
 
@@ -30,6 +31,7 @@ function App() {
         <Route path="/verify/:email" element={<VerifyPage />} />
         <Route path="/details" element={<RestaurantDetailsPage/>} />
         <Route path="/reserve" element={<ReserveTable/>} />
+        <Route path="/profile" element={<ProfilePage/>} />
         {/* Restaurant Dashboard */}
         <Route path="/restaurant" element={<RestMaster />}>
           <Route path='/restaurant/dashboard' element={<Dashboard />}/>
