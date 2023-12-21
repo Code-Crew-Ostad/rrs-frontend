@@ -3,13 +3,11 @@ import { UserLoginRequest} from "../../api/apiRequest";
 import {useNavigate} from "react-router-dom"
 import toast, { Toaster } from 'react-hot-toast';
 import SubmitButton from "../SubmitButton";
-import { useSelector, useDispatch } from 'react-redux';
-import {setUser} from '../../redux/features/userSlice';
 
 const Login = () => {
 
-        const user = useSelector((state)=>state.user.data);
-        const dispatch = useDispatch();
+        // const user = useSelector((state)=>state.user.data);
+        // const dispatch = useDispatch();
 
         const [email,setEmail]=useState("");
         const [password,setPassword]=useState("");
@@ -34,11 +32,11 @@ const Login = () => {
                     toast.success(res['message']);
 
                     //-------------Redux-Toolkit-----------------
-                    dispatch(setUser({'email':res['data']['email'], 
-                                'type':res['data']['type'],
-                                'firstName':res['data']['firstName'],
-                                'lastName':res['data']['lastName'],
-                            }));
+                    // dispatch(setUser({'email':res['data']['email'], 
+                    //             'type':res['data']['type'],
+                    //             'firstName':res['data']['firstName'],
+                    //             'lastName':res['data']['lastName'],
+                    //         }));
                     //-------------Local Storage-----------------
                     localStorage.setItem('login','1');
                     localStorage.setItem('email',res['data']['email']);

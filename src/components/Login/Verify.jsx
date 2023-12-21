@@ -24,11 +24,11 @@ const VerifyTwo = () => {
             if(res['status']==="success"){
                 toast.success(res['message']);
                 //-------------Redux-Toolkit-----------------
-                dispatch(setUser({'email':res['data']['email'], 
-                                'type':res['data']['type'],
-                                'firstName':res['data']['firstName'],
-                                'lastName':res['data']['lastName'],
-                            }));
+                // dispatch(setUser({'email':res['data']['email'], 
+                //                 'type':res['data']['type'],
+                //                 'firstName':res['data']['firstName'],
+                //                 'lastName':res['data']['lastName'],
+                //             }));
                 //-------------Local Storage-----------------
 
                 localStorage.setItem('login','1');
