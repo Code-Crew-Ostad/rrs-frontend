@@ -30,7 +30,8 @@ const MenuBar = () => {
     localStorage.clear();
     await UserLogout()
     setLogoutLoader(false);
-    navigate("/login")
+    //navigate("/login")
+    window.location.href ='/';
 }
 
   return (
