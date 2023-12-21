@@ -51,7 +51,7 @@ const Login = () => {
                         navigate("/feed");
                     }
                     else{
-                        navigate("/");
+                        window.location.href="/"
                     }
 
                     // if(sessionStorage.getItem('lastLocation')!==null){

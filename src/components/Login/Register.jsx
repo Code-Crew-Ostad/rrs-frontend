@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { UserRegistrationRequest} from "../../api/apiRequest";
 import {useNavigate} from "react-router-dom"
+
 import toast, { Toaster } from 'react-hot-toast';
 import SubmitButton from "../SubmitButton";
 
@@ -12,7 +13,6 @@ const Register = () => {
     const [mobile, setMobileNo]=useState("");
     const [email,setEmail]=useState("");
     
-
     const [BtnLoader, SetBtnLoader] = useState(false);
 
     const navigate = useNavigate();
@@ -29,10 +29,12 @@ const Register = () => {
                 SetBtnLoader(true)
                 let res= await UserRegistrationRequest(userType,email,firstName,lastName, mobile);
                 SetBtnLoader(false)
+                console.log(res);
                 if(res['status']==="success"){
                     toast.success(res['message']);
-                    navigate("/verify")
+                    navigate("/verify"+"/"+email)
                     //window.location.href = "/verify/"+email;
+
                 }
                 else{
                     toast.error("Something went wrong !");

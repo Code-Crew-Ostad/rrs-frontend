@@ -28,7 +28,7 @@ function App() {
         <Route path="/feed" element={<RestaurantFeed />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/login" element={<LoginPage />} />
-        <Route path="/verify" element={<VerifyPage />} />
+        <Route path="/verify/:email" element={<VerifyPage />} />
         <Route path="/details" element={<RestaurantDetailsPage/>} />
         <Route path="/reserve" element={<ReserveTable/>} />
         <Route path="/profile" element={<ProfilePage/>} />

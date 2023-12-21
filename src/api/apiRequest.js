@@ -21,7 +21,9 @@ export async function UserRegistrationRequest(
       userType: userType,
       email: email,
       password: "",
+      otp:"",
     };
+    console.log(reqBody);
     let result = await axios.post(URL, reqBody,{
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +31,7 @@ export async function UserRegistrationRequest(
     let data = result.data;
     return data;
   } catch (e) {
-    return false;
+    return e;
   }
 }
 // Registration Verification
@@ -236,7 +238,7 @@ export async function GetReservationsByRestId(restId){
     console.log(response.data)
     return response.data;
   } catch (error) {
-    return error;
+    return false;
   }
 }
 // Save timings for Restaurant

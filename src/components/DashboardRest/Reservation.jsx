@@ -72,7 +72,7 @@ const Reservation = () => {
                         value={selectedOption}
                         onChange={(e)=>setSelectedOption(e.target.value)}
                     > 
-                        {branch.map((branch)=>(
+                        {branch && branch.map((branch)=>(
                             <option key={branch._id} value={branch._id}>{branch.name}</option>
                         ))}
                         
@@ -130,7 +130,7 @@ const Reservation = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    { reservations && reservations.map((reservation)=>(
+                    { reservations? (reservations.map((reservation)=>(
                         <tr key={reservation.reqs_id} className='h-10 border-b-2 border-b-gray-200 cursor-pointer hover:bg-slate-200'>
                             <td className='px-3 text-center'><span className='text-xs bg-green-700 rounded-lg text-white px-2'>{reservation.reqs_date}</span></td>
                             <td className='px-3 text-center text-sm font-light'>{reservation.reqs_id}</td>
@@ -159,7 +159,7 @@ const Reservation = () => {
                                 }
                             </td>
                         </tr>
-                    ))}
+                    ))):"No data" }
                 </tbody>
             </table>
         </div> 
