@@ -31,7 +31,8 @@ const Register = () => {
                 SetBtnLoader(false)
                 if(res['status']==="success"){
                     toast.success(res['message']);
-                    window.location.href = "/verify/"+email;
+                    navigate("/verify")
+                    //window.location.href = "/verify/"+email;
                 }
                 else{
                     toast.error("Something went wrong !");
