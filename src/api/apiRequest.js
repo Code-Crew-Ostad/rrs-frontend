@@ -1,8 +1,8 @@
 import axios from "axios";
 import unauthorized from "../utils/unauthorized.js";
 
-let BASEURL = "http://localhost:5000";
-//let BASEURL = "https://rrs-backend-kappa.vercel.app";
+//let BASEURL = "http://localhost:5000";
+let BASEURL = "https://rrs-backend-kappa.vercel.app";
 
 // Registration
 export async function UserRegistrationRequest(
